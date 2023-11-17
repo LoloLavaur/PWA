@@ -1,20 +1,10 @@
-<!-- index.html -->
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
     <link rel="stylesheet" href="style.css">
-    <link rel="manifest" href="manifest.json">
-    <script>
-        //if browser support service worker
-        if('serviceWorker' in navigator) {
-          navigator.serviceWorker.register('sw.js');
-        };
-      </script>
-   
+    <link rel="manifest" href="/manifest.json"> <!-- Ajout du lien vers le manifest.json -->
     <title>GOVAGO</title>
 </head>
 <body>
@@ -33,9 +23,21 @@
             <ul>
                 <li><a href="#">Accueil</a></li>
                 <li><a href="#">Page 1</a></li>
-                <li><a href="profil.html">Page 2</a></li> <!-- Lien modifié -->
+                <li><a href="profil.html">Page 2</a></li>
             </ul>
         </nav>
     </footer>
+    <!-- Ajout du script pour le service worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => {
+                    console.log('Service Worker enregistré avec succès:', registration);
+                })
+                .catch(error => {
+                    console.error('Erreur d\'enregistrement du Service Worker:', error);
+                });
+        }
+    </script>
 </body>
 </html>
